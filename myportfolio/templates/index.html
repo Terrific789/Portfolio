@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Izunna Rex portfolio website showcasing scalable web systems and full-stack engineering projects.">
+  <title>Izunna Rex | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+  <link rel="stylesheet" href="{% static 'css/components.css' %}">
+  <link rel="stylesheet" href="{% static 'css/utils.css' %}">
+</head>
+<body
+  data-content-url="{% static 'data/site-content.json' %}"
+  data-projects-url="/api/projects/"
+  data-contact-url="/api/contact/"
+  data-csrf-url="/api/csrf/"
+>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header" id="top">
+    <nav class="nav container" aria-label="Primary navigation">
+      <a class="nav__brand" href="#top">Izunna Rex</a>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation menu">
+        Menu
+      </button>
+      <ul class="nav__links" id="nav-links">
+        <li><a class="nav__link" href="#hero">Hero</a></li>
+        <li><a class="nav__link" href="#about">About</a></li>
+        <li><a class="nav__link" href="#skills">Skills</a></li>
+        <li><a class="nav__link" href="#projects">Featured Projects</a></li>
+        <li><a class="nav__link" href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="section hero" id="hero" aria-labelledby="hero-title">
+      <div class="container hero__grid">
+        <div>
+          <p class="hero__eyebrow">Portfolio</p>
+          <h1 id="hero-title" class="hero__title"></h1>
+          <p class="hero__subtitle" id="hero-subtitle"></p>
+          <div class="hero__actions">
+            <a class="button button--primary" href="#projects">View Projects</a>
+            <a class="button button--secondary" href="#contact">Contact Me</a>
+          </div>
+        </div>
+        <aside class="hero-card" aria-label="Profile summary">
+          <h2 class="hero-card__title">Professional Focus</h2>
+          <p class="hero-card__text" id="hero-focus"></p>
+          <div class="hero-card__meta">
+            <p><span class="text-emphasis">Location:</span> <span id="hero-location"></span></p>
+            <p><span class="text-emphasis">Public Email:</span> <a id="hero-email" href="#contact"></a></p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="about" aria-labelledby="about-title">
+      <div class="container about__grid">
+        <div>
+          <h2 id="about-title">About</h2>
+          <p id="about-text" class="section__body"></p>
+        </div>
+        <aside class="about-card" aria-label="Social links">
+          <h3>Connect</h3>
+          <ul class="social-list" id="social-links"></ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <h2 id="skills-title">Skills</h2>
+        <div class="skills-grid" id="skills-grid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <div class="section__header">
+          <h2 id="projects-title">Featured Projects</h2>
+          <p class="section__body">Projects are loaded dynamically from the API.</p>
+        </div>
+        <div class="projects-grid" id="projects-grid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <div class="container contact__grid">
+        <div>
+          <h2 id="contact-title">Contact</h2>
+          <p class="section__body">
+            Let us discuss architecture, product reliability, and long-term engineering strategy.
+          </p>
+        </div>
+        <form class="contact-form" id="contact-form" novalidate>
+          <div class="contact-form__field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required>
+            <p class="contact-form__error" data-error-for="name"></p>
+          </div>
+          <div class="contact-form__field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+            <p class="contact-form__error" data-error-for="email"></p>
+          </div>
+          <div class="contact-form__field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+            <p class="contact-form__error" data-error-for="message"></p>
+          </div>
+          <button class="button button--primary contact-form__submit" type="submit">
+            <span class="contact-form__submit-text">Send Message</span>
+            <span class="loader" aria-hidden="true"></span>
+          </button>
+          <p class="contact-form__status" id="contact-status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__content">
+      <p>&copy; <span id="year"></span> Izunna Rex. All rights reserved.</p>
+      <a href="#top" class="site-footer__back">Back to top</a>
+    </div>
+  </footer>
+
+  <script type="module" src="{% static 'js/app.js' %}"></script>
+</body>
+</html>

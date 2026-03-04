@@ -1,0 +1,59 @@
+[
+  {
+    "model": "projects.project",
+    "pk": 1,
+    "fields": {
+      "title": "EnRead LMS",
+      "tech_stack": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "PHP"
+      ],
+      "description": "University-level Learning Management System enabling textbook purchases, academic material access, dynamic quiz systems, and role-based user control. Built responsive frontend architecture integrated with backend services.",
+      "live_url": "",
+      "github_url": "",
+      "is_featured": true,
+      "sort_order": 1,
+      "created_at": "2026-03-04T00:00:00Z",
+      "updated_at": "2026-03-04T00:00:00Z"
+    }
+  },
+  {
+    "model": "projects.project",
+    "pk": 2,
+    "fields": {
+      "title": "Django Blog Platform",
+      "tech_stack": [
+        "Django",
+        "PostgreSQL",
+        "JavaScript"
+      ],
+      "description": "Full-stack blog system with authentication, likes system, comments, image uploads, and dynamic user-based rendering.",
+      "live_url": "",
+      "github_url": "",
+      "is_featured": true,
+      "sort_order": 2,
+      "created_at": "2026-03-04T00:00:00Z",
+      "updated_at": "2026-03-04T00:00:00Z"
+    }
+  },
+  {
+    "model": "projects.project",
+    "pk": 3,
+    "fields": {
+      "title": "Django + JS Interactive CRUD System",
+      "tech_stack": [
+        "Django REST Framework",
+        "Vanilla JavaScript"
+      ],
+      "description": "Asynchronous data management system using Fetch API with CSRF protection and JSON-based communication.",
+      "live_url": "",
+      "github_url": "",
+      "is_featured": true,
+      "sort_order": 3,
+      "created_at": "2026-03-04T00:00:00Z",
+      "updated_at": "2026-03-04T00:00:00Z"
+    }
+  }
+]

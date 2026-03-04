@@ -1,0 +1,75 @@
+{
+  "displayName": "Izunna Rex",
+  "heroTagline": "Engineering Scalable Web Systems with Clean Architecture & Real-World Impact",
+  "heroFocus": "API-first architecture, structured systems, and maintainable engineering workflows for long-term product growth.",
+  "about": "I am a Frontend Developer transitioning into Full-Stack Engineering, with hands-on experience building scalable academic and productivity platforms. My work focuses on structured architecture, API-driven systems, performance optimization, and secure web practices. I design systems that are maintainable, scalable, and engineered for long-term growth rather than quick demos.",
+  "publicEmail": "izunnaegba2@gmail.com",
+  "location": "Nigeria",
+  "socialLinks": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/your-username"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/izunna-egba-30941532b"
+    }
+  ],
+  "skills": [
+    {
+      "category": "Frontend",
+      "items": [
+        "HTML5",
+        "CSS3",
+        "JavaScript (ES6+)",
+        "Responsive Design",
+        "Fetch API"
+      ]
+    },
+    {
+      "category": "Backend",
+      "items": [
+        "Django",
+        "Django REST Framework",
+        "RESTful APIs",
+        "Authentication Systems"
+      ]
+    },
+    {
+      "category": "Database",
+      "items": [
+        "MySQL",
+        "PostgreSQL",
+        "SQLite",
+        "Relational Schema Design"
+      ]
+    },
+    {
+      "category": "Programming",
+      "items": [
+        "Python (OOP)",
+        "C# (OOP)"
+      ]
+    },
+    {
+      "category": "Architecture & Concepts",
+      "items": [
+        "MVC/MVT",
+        "CRUD Systems",
+        "CSRF Protection",
+        "API Integration",
+        "System Design Thinking"
+      ]
+    },
+    {
+      "category": "Tools",
+      "items": [
+        "Git",
+        "GitHub",
+        "VS Code",
+        "MySQL Workbench",
+        "XAMPP"
+      ]
+    }
+  ]
+}
