@@ -20,9 +20,10 @@ const selectors = {
   year: document.querySelector("#year"),
   contactForm: document.querySelector("#contact-form"),
   contactStatus: document.querySelector("#contact-status"),
+  nav: document.querySelector(".nav"),
   navLinks: document.querySelectorAll(".nav__link"),
   navToggle: document.querySelector(".nav__toggle"),
-  navList: document.querySelector("#nav-links"),
+  navPanel: document.querySelector("#nav-panel"),
 };
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -79,21 +80,53 @@ const setupActiveNavigation = () => {
 };
 
 const setupMobileNavigation = () => {
-  if (!selectors.navToggle || !selectors.navList) {
+  if (!selectors.nav || !selectors.navToggle || !selectors.navPanel) {
     return;
   }
 
+  const closeMenu = () => {
+    selectors.nav.classList.remove("is-open");
+    selectors.navToggle.setAttribute("aria-expanded", "false");
+  };
+
   selectors.navToggle.addEventListener("click", () => {
     const isExpanded = selectors.navToggle.getAttribute("aria-expanded") === "true";
-    selectors.navToggle.setAttribute("aria-expanded", String(!isExpanded));
-    selectors.navList.classList.toggle("is-open");
+    if (isExpanded) {
+      closeMenu();
+      return;
+    }
+
+    selectors.nav.classList.add("is-open");
+    selectors.navToggle.setAttribute("aria-expanded", "true");
   });
 
   selectors.navLinks.forEach((link) => {
     link.addEventListener("click", () => {
-      selectors.navToggle.setAttribute("aria-expanded", "false");
-      selectors.navList.classList.remove("is-open");
+      closeMenu();
     });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!selectors.nav.classList.contains("is-open")) {
+      return;
+    }
+
+    if (!selectors.nav.contains(event.target)) {
+      closeMenu();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeMenu();
+    }
+  });
+
+  const mediaQuery = window.matchMedia("(min-width: 641px)");
+  mediaQuery.addEventListener("change", (event) => {
+    if (event.matches) {
+      closeMenu();
+    }
   });
 };
 
@@ -323,7 +356,7 @@ const setStatus = (message, type) => {
   }
 
   selectors.contactStatus.textContent = message;
-  selectors.contactStatus.classList.remove("is-success", "is-error");
+  selectors.contactStatus.classList.remove("is-success", "is-error", "is-warning");
   if (type) {
     selectors.contactStatus.classList.add(type);
   }
@@ -369,7 +402,20 @@ const setupContactForm = () => {
 
       const data = await response.json();
       if (!response.ok) {
-        setStatus(data.detail || "Unable to submit form right now.", "is-error");
+        if (response.status === 403) {
+          setStatus("Security token expired. Refresh this page and try again.", "is-error");
+          return;
+        }
+
+        const detail = data.detail || "Unable to submit form right now.";
+        const isSavedButEmailFailed = detail.toLowerCase().includes("message saved");
+        if (isSavedButEmailFailed) {
+          selectors.contactForm.reset();
+          setStatus(detail, "is-warning");
+          return;
+        }
+
+        setStatus(detail, "is-error");
         return;
       }
 
